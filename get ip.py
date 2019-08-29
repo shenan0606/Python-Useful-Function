@@ -5,7 +5,7 @@ import json
 from io import StringIO
 import pandas as pd
 
-api_key = ''
+api_key = 'abc'
 
 def get_info(address):  
     api = "http://api.ipstack.com/" + address + api_key
