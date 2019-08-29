@@ -1,13 +1,13 @@
-#!/usr/bin/env python
+# Use IP api provided by ipstack to pull information from IP Address
 import sys
 import urllib.request
 import json
 from io import StringIO
 import pandas as pd
 
-
+api_key = ''
 def get_info(address):  
-    api = "http://api.ipstack.com/" + address + "?access_key=00ae38b023482ed978fc7e354465615f"
+    api = "http://api.ipstack.com/" + address + api_key
     try:        
         result = urllib.request.urlopen(api).read()
         result = str(result)
