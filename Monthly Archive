@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Sep 20 09:36:15 2019
+
+@author: shenan
+"""
+import pandas as pd
+from datetime import datetime, timedelta
+import os
+def date_range(start, stop, step):
+    while start < stop:
+        yield start
+        start += step
+        
+file_path = ""
+file_name = ""
+
+archive = pd.DataFrame()
+for d in date_range(datetime(2019, 8, 1), datetime(2019,9,1), timedelta(days=1)):
+    if os.path.exists(file_path + 'file_name{}.csv'.format(str(d)[:10])):
+        df = pd.read_csv(file_path + 'file_name{}.csv'.format(str(d)[:10]))        
+        archive = archive.append(pd.DataFrame(data=df), ignore_index=True)
+archive.shape
+archive.groupby('ap_received_day').size()
+archive.to_csv(file_path + 'file_name {}.csv'.format('2019-08'))
+        
+        
+
+    
+
+
+
+
